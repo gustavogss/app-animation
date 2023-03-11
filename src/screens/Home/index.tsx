@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, Alert } from 'react-native';
+import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import Animated, { 
   Easing,
@@ -68,10 +68,12 @@ function handlerZoom() {
       <GestureDetector gesture={onPitch}>
       <Animated.View style={[styles.element, , onAnimatedStyle]} />
       </GestureDetector>
-      <Button               
-      title='Animar'  
+      <TouchableOpacity      
+      style={styles.botao}
       onPress={handlerZoom}    
-      />
+      >
+        <Text style={styles.btnText}>Animar</Text>
+      </TouchableOpacity>
     </View>
   );
   }

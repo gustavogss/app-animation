@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {    
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#212121',
     alignItems: 'center',
     justifyContent: 'center',
 },
@@ -14,5 +14,18 @@ element:{
     borderRadius: 7,
     margin: 32
 },
+botao:{   
+  width: '35%',
+  marginTop: 10,  
+  backgroundColor: '#090',
+  borderRadius: 20,
+  padding: 10,
+},
+btnText:{
+  color: '#FFFFFF',
+  fontSize: 16,
+  fontWeight: 'normal',
+  textAlign: 'center',
+}
  
 });

@@ -47,6 +47,12 @@ export function Home() {
   .onEnd(()=>{
     rotation.value = withTiming(0);
   })
+
+  const onPitch = Gesture
+  .Pinch()
+  .onUpdate((event)=>{
+    onScale.value = event.scale;
+  })
   
 
 function handlerZoom() {
@@ -59,7 +65,7 @@ function handlerZoom() {
 
   return (
     <View style={styles.container}>
-      <GestureDetector gesture={onRotation}>
+      <GestureDetector gesture={onPitch}>
       <Animated.View style={[styles.element, , onAnimatedStyle]} />
       </GestureDetector>
       <Button               

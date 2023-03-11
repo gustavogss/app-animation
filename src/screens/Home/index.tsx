@@ -16,9 +16,12 @@ import Animated, {
 export function Home() {
 
   const onScale = useSharedValue(2);
+  const rotation = useSharedValue(0);
+
   const onAnimatedStyle = useAnimatedStyle(()=>({
     transform: [
-      {scale: onScale.value}
+      {scale: onScale.value},
+      {rotateZ: `${(rotation.value / Math.PI) * 180}deg`}
     ]
   }));
 
@@ -35,6 +38,15 @@ export function Home() {
   .onStart(()=>{onScale.value = withTiming(1.5)})
   .onEnd(()=>{onScale.value = withTiming(1)    
   })
+
+  const onRotation = Gesture
+  .Rotation()
+  .onUpdate((event)=>{
+    rotation.value = event.rotation;
+  })
+  .onEnd(()=>{
+    rotation.value = withTiming(0);
+  })
   
 
 function handlerZoom() {
@@ -47,7 +59,7 @@ function handlerZoom() {
 
   return (
     <View style={styles.container}>
-      <GestureDetector gesture={onLongPress}>
+      <GestureDetector gesture={onRotation}>
       <Animated.View style={[styles.element, , onAnimatedStyle]} />
       </GestureDetector>
       <Button               

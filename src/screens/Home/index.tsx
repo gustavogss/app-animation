@@ -1,14 +1,17 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Alert } from 'react-native';
 import { styles } from './styles';
 import Animated, { 
   Easing,
   useAnimatedStyle, 
   useSharedValue, 
   withTiming,
-  withSpring
+  withSpring,
+  runOnJS
  }  
   from 'react-native-reanimated';
+
+  import {GestureDetector, Gesture} from 'react-native-gesture-handler';
 
 export function Home() {
 
@@ -19,7 +22,14 @@ export function Home() {
     ]
   }));
 
-function handlerAnimated() {
+  const onTap = Gesture
+  .Tap()
+  .numberOfTaps(2)
+  .onStart(()=>{
+    runOnJS(Alert.alert)('Toque', 'Você tocou no botão 2 vezes!')    
+  });
+
+function handlerZoom() {
   (scale.value === 1) ? 
   (scale.value = withTiming(1.5, {duration: 500, easing: Easing.elastic(3)})) 
   : 
@@ -29,10 +39,12 @@ function handlerAnimated() {
 
   return (
     <View style={styles.container}>
+      <GestureDetector gesture={onTap}>
       <Animated.View style={[styles.element, , animatedStyle]} />
+      </GestureDetector>
       <Button               
       title='Animar'  
-      onPress={handlerAnimated}    
+      onPress={handlerZoom}    
       />
     </View>
   );

@@ -1,4 +1,6 @@
-# Projeto
+# Projeto App-Animation :iphone:
+
+Projeto React Native utilizando gestos e animações
 
 # Tecnologias e Ferramentas utilizadas :robot:
 

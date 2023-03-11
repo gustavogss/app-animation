@@ -8,17 +8,17 @@ import Animated, {
   withTiming,
   withSpring,
   runOnJS
- }  
+ }    
   from 'react-native-reanimated';
 
   import {GestureDetector, Gesture} from 'react-native-gesture-handler';
 
 export function Home() {
 
-  const scale = useSharedValue(2);
-  const animatedStyle = useAnimatedStyle(()=>({
+  const onScale = useSharedValue(2);
+  const onAnimatedStyle = useAnimatedStyle(()=>({
     transform: [
-      {scale: scale.value}
+      {scale: onScale.value}
     ]
   }));
 
@@ -29,18 +29,26 @@ export function Home() {
     runOnJS(Alert.alert)('Toque', 'Você tocou no botão 2 vezes!')    
   });
 
+  const onLongPress = Gesture
+  .LongPress()
+  .minDuration(200)
+  .onStart(()=>{onScale.value = withTiming(1.5)})
+  .onEnd(()=>{onScale.value = withTiming(1)    
+  })
+  
+
 function handlerZoom() {
-  (scale.value === 1) ? 
-  (scale.value = withTiming(1.5, {duration: 500, easing: Easing.elastic(3)})) 
+  (onScale.value === 1) ? 
+  (onScale.value = withTiming(1.5, {duration: 500, easing: Easing.elastic(3)})) 
   : 
-  (scale.value = withSpring(1));
+  (onScale.value = withSpring(1));
   }
 
 
   return (
     <View style={styles.container}>
-      <GestureDetector gesture={onTap}>
-      <Animated.View style={[styles.element, , animatedStyle]} />
+      <GestureDetector gesture={onLongPress}>
+      <Animated.View style={[styles.element, , onAnimatedStyle]} />
       </GestureDetector>
       <Button               
       title='Animar'  

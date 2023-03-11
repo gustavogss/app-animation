@@ -17,11 +17,14 @@ export function Home() {
 
   const onScale = useSharedValue(2);
   const rotation = useSharedValue(0);
+  const position = useSharedValue(0);
 
   const onAnimatedStyle = useAnimatedStyle(()=>({
     transform: [
       {scale: onScale.value},
-      {rotateZ: `${(rotation.value / Math.PI) * 180}deg`}
+      {rotateZ: `${(rotation.value / Math.PI) * 180}deg`},
+      {translateX: position.value},
+      
     ]
   }));
 
@@ -53,6 +56,18 @@ export function Home() {
   .onUpdate((event)=>{
     onScale.value = event.scale;
   })
+
+  const onDragDrop = Gesture
+  .Pan()
+  .onUpdate((event)=>{
+    position.value = event.translationX;
+  })
+  .onUpdate((event)=>{
+    position.value = event.translationY;
+  })
+  .onEnd(()=>{
+    position.value = withTiming(0);
+  })
   
 
 function handlerZoom() {
@@ -65,7 +80,7 @@ function handlerZoom() {
 
   return (
     <View style={styles.container}>
-      <GestureDetector gesture={onPitch}>
+      <GestureDetector gesture={onDragDrop}>
       <Animated.View style={[styles.element, , onAnimatedStyle]} />
       </GestureDetector>
       <TouchableOpacity      

@@ -80,7 +80,12 @@ function handlerZoom() {
 
   return (
     <View style={styles.container}>
-      <GestureDetector gesture={onDragDrop}>
+      <GestureDetector gesture={Gesture.Race(
+        onLongPress, 
+        onDragDrop, 
+        onPitch, 
+        onTap,
+        onRotation)}>
       <Animated.View style={[styles.element, , onAnimatedStyle]} />
       </GestureDetector>
       <TouchableOpacity      
@@ -92,3 +97,8 @@ function handlerZoom() {
     </View>
   );
   }
+
+  /*
+  * Gesture.Race -> um gesto ignora o outro
+  * Gesture.Simulation -> permite utlizar vários gestos ao mesmo tempo
+  */ 

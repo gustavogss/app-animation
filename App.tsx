@@ -1,11 +1,11 @@
 import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import {Home} from './src/screens/Home';
+import { Routes } from './src/routes';
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{flex: 1 }}>
-      <Home />
+      <Routes />
     </GestureHandlerRootView>
   ); 
 }

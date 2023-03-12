@@ -13,19 +13,18 @@ element:{
     height: 100,
     borderRadius: 7,
     margin: 32
-},
-botao:{   
-  width: '35%',
-  marginTop: 10,  
-  backgroundColor: '#090',
+}, 
+botao: {
+  width: "60%",
+  marginTop: 20,
+  backgroundColor: '#664AFF',
   borderRadius: 20,
   padding: 10,
 },
-btnText:{
-  color: '#FFFFFF',
-  fontSize: 16,
-  fontWeight: 'normal',
-  textAlign: 'center',
-}
- 
+btnText: {
+  color: "#FFFFFF",
+  fontSize: 20,
+  fontWeight: "normal",
+  textAlign: "center",
+},
 });

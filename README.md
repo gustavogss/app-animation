@@ -13,6 +13,7 @@ Projeto React Native utilizando gestos e animações
 
 ## Aplicativo :rocket:
 
+[Gravação de tela de 11-03-2023 22:31:27.webm](https://user-images.githubusercontent.com/20332960/224519375-c1b3a1a6-1420-49e1-873e-95654a00c7cb.webm)
 
-https://user-images.githubusercontent.com/20332960/224465546-2f819f37-1aa5-43bd-b25a-8bc5cffa232c.mp4
+
 
